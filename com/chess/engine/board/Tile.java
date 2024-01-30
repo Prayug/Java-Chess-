@@ -12,7 +12,7 @@ public abstract class Tile{
 
     private static final Map<Integer, EmptyTile> EMPTY_TILES_CACHE = createAllPossibleEmptyTiles(); 
 
-    private Tile(int tileCoordinte) {
+    private Tile(final int tileCoordinte) {
         this.tileCoordinte = tileCoordinte;
     }
 
@@ -23,7 +23,7 @@ public abstract class Tile{
     private static Map<Integer, EmptyTile> createAllPossibleEmptyTiles() {
         final Map<Integer, EmptyTile> emptyTileMap = new HashMap<>();
 
-        for(int i = 0; i < 64; i++){
+        for(int i = 0; i < BoardUtils.NUM_TILES; i++){
             emptyTileMap.put(i, new EmptyTile(i));
         }
         return ImmutableMap.copyOf(emptyTileMap);
@@ -55,7 +55,7 @@ public abstract class Tile{
         
         private final Piece pieceOnTile;
 
-        private OccupiedTile(int tileCoordintent, Piece pieceOnTile){
+        private OccupiedTile(int tileCoordintent, final Piece pieceOnTile){
             super(tileCoordintent);
             this.pieceOnTile = pieceOnTile;
         }
