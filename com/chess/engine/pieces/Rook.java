@@ -27,9 +27,10 @@ public class Rook extends Piece{
     public Collection<Move> calculateLegalMoves(final Board board) {
 
         final List<Move> legalMoves = new ArrayList<>();
+        int candidateDestinationCoordinate;
 
         for(final int candidateCoordinateOffset: CANDIDATE_MOVE_VECTOR_COORDINATES) { 
-            int candidateDestinationCoordinate = this.piecePosition;
+            candidateDestinationCoordinate = this.piecePosition;
 
             while(BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)){
                 

@@ -22,9 +22,9 @@ public class Pawn extends Piece{
     @Override
     public Collection<Move> calculateLegalMoves(final Board board) {
         final List<Move> legalMoves = new ArrayList<>();
-
+        int candidateDestinationCoordinate;
         for(final int currentCandidateOffset:   CANDIDATE_MOVE_COORDINATE){
-            final int candidateDestinationCoordinate = this.piecePosition + (currentCandidateOffset * this.pieceAlliance.getDirection());
+            candidateDestinationCoordinate = this.piecePosition + (currentCandidateOffset * this.pieceAlliance.getDirection());
             if(!BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)){
                 continue;
             }
