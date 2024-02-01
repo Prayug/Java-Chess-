@@ -35,8 +35,13 @@ public class Pawn extends Piece{
                     legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
 
                 }
-        }
+            }else if(currentCandidateOffset == 7){
 
+            }else if(currentCandidateOffset == 9){
+                
+            }
+        }
         return legalMoves;
-    }    
-}
+    }
+}    
+
