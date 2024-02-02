@@ -18,9 +18,8 @@ public class Rook extends Piece{
     private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {-8,-1,1,8};
 
 
-    Rook(int piecePosition, Alliance pieceAlliance) {
-        super(piecePosition, pieceAlliance);
-        //TODO Auto-generated constructor stub
+    public Rook(final Alliance pieceAlliance,int piecePosition) {
+        super(pieceAlliance, piecePosition);
     }
 
      @Override
