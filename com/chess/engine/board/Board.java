@@ -18,19 +18,30 @@ import java.util.Map;
 public class Board {
 
     private final List<Tile> gameBoard;
-    private final Collection<Piece> whitePiece;
-    private final Collection<Piece> blackPiece;
+    private final Collection<Piece> whitePieces;
+    private final Collection<Piece> blackPieces;
 
     
 
     private Board(Builder builder) {
         this.gameBoard = createGameBoard(builder);
-        this.whitePiece = calculateActivePieces(this.gameBoard, Alliance.WHITE);
-        this.blackPiece = calculateActivePieces(this.gameBoard, Alliance.BLACK);
+        this.whitePieces = calculateActivePieces(this.gameBoard, Alliance.WHITE);
+        this.blackPieces = calculateActivePieces(this.gameBoard, Alliance.BLACK);
+
+        final Collection<Move> whiteStandardLegalMoves = calculateLegalMoves(this.blackPieces);
+        final Collection<Move> blackStandardLegalMoves = calculateLegalMoves(this.whitePieces);
 
     }
 
-    private Collection<Piece> calculateActivePieces(final List<Tile> gameBoard, final Alliance alliance) {
+    private Collection<Move> calculateLegalMoves(final Collection<Piece> pieces) {
+        final List<Move> legalMoves = new ArrayList<Move>();
+        for(final Piece piece: pieces){
+            legalMoves.addAll(piece.calculateLegalMoves(this));
+        }
+        return ImmutableList.copyOf(legalMoves);
+    }
+
+    private static Collection<Piece> calculateActivePieces(final List<Tile> gameBoard, final Alliance alliance) {
         final List<Piece> activePieces = new ArrayList<>();
         for(final Tile tile: gameBoard) {
             if(tile.isTileOccupied()){
