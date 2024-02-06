@@ -46,6 +46,11 @@ public abstract class Tile{
         }
 
         @Override
+        public String toString(){
+            return "-";
+        }
+
+        @Override
         public Piece getPiece() {
             return null;
         }
@@ -58,6 +63,11 @@ public abstract class Tile{
         private OccupiedTile(int tileCoordintent, final Piece pieceOnTile){
             super(tileCoordintent);
             this.pieceOnTile = pieceOnTile;
+        }
+
+        @Override
+        public String toString(){
+            return this.pieceOnTile.toString();
         }
 
         @Override

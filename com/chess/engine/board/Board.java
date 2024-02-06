@@ -30,7 +30,26 @@ public class Board {
 
         final Collection<Move> whiteStandardLegalMoves = calculateLegalMoves(this.blackPieces);
         final Collection<Move> blackStandardLegalMoves = calculateLegalMoves(this.whitePieces);
+    }
 
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        for(int i = 0; i < BoardUtils.NUM_TILES; i++) { 
+            final String tileText = prettyPrint(this.gameBoard.get(i));
+            builder.append(String.format("%3s", tileText));
+            if((i+1) % BoardUtils.NUM_TILES_PER_ROW == 0) {
+                builder.append("\n");
+            }
+        }
+        return builder.toString();
+    }
+
+    private static String prettyPrint(Tile tile) {
+        if(tile.isTileOccupied()){
+            return tile.getPiece().getPieceAlliance().isBlack() ? tile.toString().toLowerCase() : tile.toString();
+        }
+        return tile.toString();
     }
 
     private Collection<Move> calculateLegalMoves(final Collection<Piece> pieces) {
