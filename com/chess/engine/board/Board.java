@@ -12,6 +12,7 @@ import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,7 +45,7 @@ public class Board {
         }
         return builder.toString();
     }
-    
+
     private Collection<Move> calculateLegalMoves(final Collection<Piece> pieces) {
         final List<Move> legalMoves = new ArrayList<Move>();
         for(final Piece piece: pieces){
@@ -126,7 +127,7 @@ public class Board {
         Alliance nextMoveMaker;
 
         public Builder(){
-
+            this.boardConfig = new HashMap<>();
         }
 
         public Builder setPiece(final Piece piece){
