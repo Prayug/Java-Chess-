@@ -9,12 +9,11 @@ import com.chess.engine.pieces.Piece;
 public class BlackPlayer extends Player {
 
     public BlackPlayer(Board board, Collection<Move> whiteStandardLegalMoves, Collection<Move> blackStandardLegalMoves) {
-    
+        super(board, blackStandardLegalMoves, whiteStandardLegalMoves);
     }
 
     @Override
     public Collection<Piece> getActivePieces() {
-        // TODO Auto-generated method stub
         return this.board.getBlackPieces();
     }
 }

@@ -24,9 +24,9 @@ public abstract class Player {
                 return (King) piece;
             }
         }
+
+        throw new RuntimeException();
     }
 
-    public abstract Collection<Piece> getActivePieces(){
-        
-    }
+    public abstract Collection<Piece> getActivePieces();
 }

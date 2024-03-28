@@ -9,12 +9,11 @@ import com.chess.engine.pieces.Piece;
 public class WhitePlayer extends Player{
 
     public WhitePlayer(Board board, Collection<Move> whiteStandardLegalMoves, Collection<Move> blackStandardLegalMoves) {
-        
+        super(board, whiteStandardLegalMoves, blackStandardLegalMoves);
     }
 
     @Override
     public Collection<Piece> getActivePieces() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getActivePieces'");
+        return this.board.getWhitePieces();
     }
 }
